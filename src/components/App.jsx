@@ -8,7 +8,7 @@ export const App = () => {
 				alignItems: 'center',
 				fontSize: 40,
 				backgroundColor: 'violet',
-				color: 'burlywood',
+				color: 'black',
 			}}
 		>
 			React homework template
