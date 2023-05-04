@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/516.f410412b.chunk.js","mappings":"yIAIA,UAJmB,WAClB,OAAO,uCACP,C","sources":["pages/ResultPage/ResultPage.js"],"sourcesContent":["const ResultPage = () => {\n\treturn <div>ResultPage</div>;\n};\n\nexport default ResultPage;\n"],"names":[],"sourceRoot":""}
