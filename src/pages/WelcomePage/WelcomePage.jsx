@@ -4,6 +4,9 @@ import CustomTextField from 'components/CustomTextField/CustomTextField';
 import SelectFields from 'components/SelectFields/SelectFields';
 import { useAxios } from 'hooks';
 import ErrorSvg from 'images/error-404.svg';
+//import { useSelector } from 'react-redux';
+//import { selectQuestions } from 'redux/questions/slice/slice';
+
 const difficultyOptions = [
 	{
 		id: 'easy',
@@ -31,9 +34,14 @@ const typeOptions = [
 ];
 
 const WelcomePage = () => {
+	//const {
+	//	question_category,
+	//	question_difficulty,
+	//	question_type,
+	//	amount_of_question,
+	//	score,
+	//} = useSelector(selectQuestions);
 	const { response, error, isLoading } = useAxios({ url: 'api_category.php' });
-
-	console.log(':>  WelcomePage  response:', response);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -95,12 +103,7 @@ const WelcomePage = () => {
 						<SelectFields options={typeOptions} label="Type" />
 						<CustomTextField label="Amount of Questions" />
 						<Box mt={3}>
-							<CustomButton
-								onClick={() => {
-									console.log('click getStarted');
-								}}
-								type="submit"
-							>
+							<CustomButton onClick={() => {}} type="submit">
 								Get Started
 							</CustomButton>
 						</Box>

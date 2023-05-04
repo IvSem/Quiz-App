@@ -1,12 +1,32 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+	changeCategory,
+	changeDifficulty,
+	changeType,
+} from 'redux/questions/slice/slice';
 
 const SelectFields = ({ label, options }) => {
-	console.log(':>  SelectFields  options:', options);
 	const [value, setValue] = useState('');
+	const dispatch = useDispatch();
 
 	const handleChange = event => {
 		setValue(event.target.value);
+		switch (label) {
+			case 'Category':
+				dispatch(changeCategory(event.target.value));
+				break;
+			case 'Difficulty':
+				dispatch(changeDifficulty(event.target.value));
+				break;
+			case 'Type':
+				dispatch(changeType(event.target.value));
+				break;
+
+			default:
+				break;
+		}
 	};
 	return (
 		<Box mt={1} width="40%" mx="auto">
