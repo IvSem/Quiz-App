@@ -1,11 +1,18 @@
-import { Box, CardMedia, CircularProgress, Typography } from '@mui/material';
-import { CustomButton } from 'components';
+import { Box, Typography } from '@mui/material';
+import { CustomButton, Error, Loader } from 'components';
 import CustomTextField from 'components/CustomTextField/CustomTextField';
 import SelectFields from 'components/SelectFields/SelectFields';
 import { useAxios } from 'hooks';
-import ErrorSvg from 'images/error-404.svg';
-//import { useSelector } from 'react-redux';
-//import { selectQuestions } from 'redux/questions/slice/slice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {
+	changeAmount,
+	changeCategory,
+	changeDifficulty,
+	changeScore,
+	changeType,
+} from 'redux/questions/slice/slice';
 
 const difficultyOptions = [
 	{
@@ -34,17 +41,21 @@ const typeOptions = [
 ];
 
 const WelcomePage = () => {
-	//const {
-	//	question_category,
-	//	question_difficulty,
-	//	question_type,
-	//	amount_of_question,
-	//	score,
-	//} = useSelector(selectQuestions);
 	const { response, error, isLoading } = useAxios({ url: 'api_category.php' });
+	const navigate = useNavigate();
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(changeCategory(''));
+		dispatch(changeDifficulty(''));
+		dispatch(changeType(''));
+		dispatch(changeAmount(10));
+		dispatch(changeScore(0));
+	}, [dispatch]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		navigate('/questions');
 	};
 
 	return (
@@ -69,29 +80,9 @@ const WelcomePage = () => {
 					Settings
 				</Typography>
 
-				{error && (
-					<>
-						<Typography color={'#ed5656'} mt={5} variant="h4">
-							Some went wrong! <br />
-							{error.message}
-						</Typography>
-						<CardMedia
-							sx={{
-								width: '30%',
-								mx: 'auto',
-							}}
-							component="img"
-							image={ErrorSvg}
-							alt={error.message}
-						/>
-					</>
-				)}
+				{error && <Error error={error} />}
 
-				{isLoading && (
-					<Box mt={15}>
-						<CircularProgress color="secondary" size={100} thickness={3} />
-					</Box>
-				)}
+				{isLoading && <Loader />}
 
 				{!isLoading && !error && (
 					<form onSubmit={handleSubmit}>

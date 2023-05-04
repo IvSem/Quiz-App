@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { changeAmount } from 'redux/questions/slice/slice';
 
 const CustomTextField = ({ label }) => {
-	const [value, setValue] = useState(1);
+	const [value, setValue] = useState('');
 	const dispatch = useDispatch();
 	const handleChange = e => {
 		setValue(e.target.value);
