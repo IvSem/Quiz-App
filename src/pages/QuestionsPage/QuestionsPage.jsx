@@ -66,18 +66,25 @@ const QuestionsPage = () => {
 
 			{!isLoading && !error && (
 				<>
-					<Typography variant="h4">Question {currentIndex + 1}</Typography>
+					<Typography variant="h4">
+						Question {currentIndex + 1} / {response.results.length}
+					</Typography>
 					<Typography mt={3} variant="h6">
 						{decode(response.results[currentIndex].question)}
 					</Typography>
 
-					<Box mt={3} width="50%" mx="auto">
+					<Box
+						mt={3}
+						width={{ xs: '100%', sm: '100%', md: '75%', lg: '50%' }}
+						mx="auto"
+					>
 						<Stack spacing={3}>
 							{options.map(el => (
 								<Button
 									key={el}
 									sx={{
 										py: 1,
+										px: 1,
 										fontSize: '20px',
 										color: '#2a2a2a	',
 										borderBottom: '1px solid black',
@@ -92,9 +99,6 @@ const QuestionsPage = () => {
 							))}
 						</Stack>
 					</Box>
-					<Typography mt={5} variant="h6">
-						Score {score}/{response.results.length}
-					</Typography>
 				</>
 			)}
 		</Box>

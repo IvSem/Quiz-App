@@ -63,12 +63,11 @@ const WelcomePage = () => {
 			<Box textAlign="center" pt={{ xs: '15px', sm: '30px', md: '50px' }}>
 				<Typography
 					variant="h1"
+					fontSize={{ xs: '32px', sm: '48px', md: '64px' }}
 					sx={{
-						fontSize: {
-							xs: '32px', // розмір шрифту для маленьких екранів
-							sm: '48px', // розмір шрифту для середніх екранів
-							md: '64px', // розмір шрифту для великих екранів
-						},
+						background: `linear-gradient(to right, rgb(0, 0, 255), rgb(103, 18, 103))`,
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
 					}}
 					fontWeight="700"
 					mb={{ xs: '8px', sm: '15px', md: '30px' }}

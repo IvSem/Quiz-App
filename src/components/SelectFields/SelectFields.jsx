@@ -29,7 +29,11 @@ const SelectFields = ({ label, options }) => {
 		}
 	};
 	return (
-		<Box mt={1} width="40%" mx="auto">
+		<Box
+			mt={1}
+			width={{ xs: '100%', sm: '100%', md: '75%', lg: '50%' }}
+			mx="auto"
+		>
 			<FormControl fullWidth>
 				<InputLabel>{label}</InputLabel>
 				<Select value={value} onChange={handleChange} label={label}>

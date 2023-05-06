@@ -19,7 +19,11 @@ const CustomTextField = ({ label }) => {
 		}
 	};
 	return (
-		<Box mt={1} width="40%" mx="auto">
+		<Box
+			mt={1}
+			width={{ xs: '100%', sm: '100%', md: '75%', lg: '50%' }}
+			mx="auto"
+		>
 			<FormControl fullWidth>
 				<TextField
 					value={value}
